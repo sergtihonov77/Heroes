@@ -1,0 +1,122 @@
+﻿@model Heroes.Models.Item
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>Item</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Mark)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Mark)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ItemClass)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ItemClass)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.IconUri)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.IconUri)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.PurchacePrace)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.PurchacePrace)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.SalePrice)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.SalePrice)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Health)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Health)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Mann)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Mann)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Armor)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Armor)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Power)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Power)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Ability)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Ability)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Intelligence)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Intelligence)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

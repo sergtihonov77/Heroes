@@ -22,3 +22,35 @@ select,
 textarea {
     max-width: 280px;
 }
+
+ .brd {
+            width: 500px;	height: auto;
+        }
+ .section {
+  float: left;
+  margin: 0 1.5%;
+  width: 53%;
+}
+.aside {
+  float: right;
+  margin: 0 1.5%;
+  width: 40%;
+}
+
+footer {
+  clear: both;
+}
+
+.navi {
+    margin-top:10px;
+    margin-bottom:10px;
+}
+
+.imgchnghr {
+    margin: 20px;
+    height: 300px;
+    width: 300px;
+
+}
+
+

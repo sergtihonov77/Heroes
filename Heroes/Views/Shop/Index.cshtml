@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Heroes.Models.Item>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <ul class="nav nav-tabs navi">
+        <li role="presentation" class="active"><a href="#">Покупка</a></li>
+        <li role="presentation"><a href="#">Продажа</a></li>
+    </ul>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <aside class="aside">
+        <p>Asideragrsgsrfgsf</p>
+        <p>AsideSFgbzxhbzdhbzdfh</p>
+        <p>Asidefbzhbdzfhbzx</p>
+        <p>Asidezfbzfhbzdfhb</p>
+        <p>Asidezfbzfbzdfxb</p>
+        <p>Asidezfbzfbzfbz</p>
+    </aside>
+    
+        @foreach (var item in Model)
+        {
+            <section class="section">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <ul class="media-list">
+                            <li class="media">
+                                <div class="media-left media-middle">
+                                    <h3>@Html.DisplayFor(modelItem => item.Mark)</h3>
+                                    <a href="#">
+                                        <img src="@Url.Content(item.IconUri)" height="200" width="220" />
+                                    </a>
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="media-heading">Описание:</h4>
+                                    <p>@Html.DisplayFor(modelItem => item.Description)</p>
+                                    @Html.ActionLink("Details", "PartrialDetails", new { id = item.Id })
+                                    <p><a href="" class="btn btn-primary" role="button">Подробнее &rarr;</a></p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        }
+</body>
+</html>

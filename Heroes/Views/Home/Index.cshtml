@@ -6,52 +6,52 @@
 
 <div class="jumbotron">
     <h1>HEROES</h1>
-    <p class="lead"> Welcome to heroes world. Please, change hero! </p>
+    <p class="lead"> Welcome to heroes world. Please, change hero! + @ViewBag.Accid </p>
 </div>
 
 <div class="row">
     <div class="col-md-3">
         <h2>Humans</h2>
-        <p>Human Warior</p>
-        <img src="~/Pictures/Heroes/human_warior.jpg" width="100" height="100" />
-        <p>Human Wizard</p>
-        <img src="~/Pictures/Heroes/human_wizard.jpg" width="100" height="100" />
-        <p>Human Acher</p>
-        <img src="~/Pictures/Heroes/human_archer.jpg" width="100" height="100" />
-        <p>Human Healer</p>
-        <img src="~/Pictures/Heroes/human_hiller.jpg" width="100" height="100"/>
+        <p>@Html.ActionLink("Human Warrior", "ChangeHero", new { id = 1 })</p>
+        <img src="~/Pictures/Heroes/human_warior.jpg" width="150" height="150" />
+        <p>@Html.ActionLink("Human Wizard", "ChangeHero", new { id = 5 })</p>
+        <img src="~/Pictures/Heroes/human_wizard.jpg" width="150" height="150" />
+        <p>@Html.ActionLink("Human Archer", "ChangeHero", new { id = 6 })</p>
+        <img src="~/Pictures/Heroes/human_archer.jpg" width="150" height="150" />
+        <p>@Html.ActionLink("Human Healer", "ChangeHero", new { id = 7 })</p>
+        <img src="~/Pictures/Heroes/human_hiller.jpg" width="150" height="150"/>
     </div>
     <div class="col-md-3">
         <h2>Elfs</h2>
-        <p>Elf Paladin</p>
-        <img src="~/Pictures/Heroes/elf_warior.jpg" width="100"  height="100" />
-        <p>Elf Wizard</p>
-        <img src="~/Pictures/Heroes/elf_wizard.jpeg" width="100" height="100" />
-        <p>Elf Acher</p>
-        <img src="~/Pictures/Heroes/elf_archer.jpg" width="100" height="100" />
-        <p>Elf Healer</p>
-        <img src="~/Pictures/Heroes/elf_wizzard.jpg" width="100" height="100" />
+        <p>@Html.ActionLink("Elf Paladin", "ChangeHero", new { id = 8 })</p>
+        <img src="~/Pictures/Heroes/elf_warior.jpg" width="150"  height="150" />
+        <p>@Html.ActionLink("Elf Wizard", "ChangeHero", new { id = 2 })</p>
+        <img src="~/Pictures/Heroes/elf_wizard.jpeg" width="150" height="150" />
+        <p>@Html.ActionLink("Elf Archer", "ChangeHero", new { id = 9})</p>
+        <img src="~/Pictures/Heroes/elf_archer.jpg" width="150" height="150" />
+        <p>@Html.ActionLink("Elf Healer", "ChangeHero", new { id = 10 })</p>
+        <img src="~/Pictures/Heroes/elf_wizzard.jpg" width="150" height="150" />
     </div>
     <div class="col-md-3">
         <h2>Undead</h2>
-        <p>Undead Warior</p>
-        <img src="~/Pictures/Heroes/undead_warior (2).jpg" width="100"  height="100" />
-        <p>Undead Wizard</p>
-        <img src="~/Pictures/Heroes/undead_wizard.jpg" width="100" height="100" />
-        <p>Undead Asassin</p>
-        <img src="~/Pictures/Heroes/undead_archer.jpg" width="100" height="100" />
-        <p>Undead Necromat</p>
-        <img src="~/Pictures/Heroes/undead_necr.jpg" width="100" height="100" />
+        <p>@Html.ActionLink("Undead Warrior", "ChangeHero", new { id = 14 })</p>
+        <img src="~/Pictures/Heroes/undead_warior (2).jpg" width="150"  height="150" />
+        <p>@Html.ActionLink("Undead Wizard", "ChangeHero", new { id = 15 })</p>
+        <img src="~/Pictures/Heroes/undead_wizard.jpg" width="150" height="150" />
+        <p>@Html.ActionLink("Undead Archer", "ChangeHero", new { id = 16 })</p>
+        <img src="~/Pictures/Heroes/undead_archer.jpg" width="150" height="150" />
+        <p>@Html.ActionLink("Undead Necromant", "ChangeHero", new { id = 21 })</p>
+        <img src="~/Pictures/Heroes/undead_necr.jpg" width="150" height="150" />
     </div>
     <div class="col-md-3">
-        <h2>Orc</h2>
-        <p>Orc Warior</p>
-        <img src="~/Pictures/Heroes/Orc_warior.jpg" width="100" height="100" />
-        <p>Orc Shaman</p>
-        <img src="~/Pictures/Heroes/orc_wizzard.jpg" width="100" height="100" />
-        <p>Orc Archer</p>
-        <img src="~/Pictures/Heroes/orc_archer.jpg" width="100" height="100" />
-        <p>Orc Healer</p>
-        <img src="~/Pictures/Heroes/orc_shaman.jpg" width="100" height="100" />
+        <h2>Orcs</h2>
+        <p>@Html.ActionLink("Orc Warrior", "ChangeHero", new { id = 11 })</p>
+        <img src="~/Pictures/Heroes/Orc_warior.jpg" width="150" height="150" />
+        <p>@Html.ActionLink("Orc Wizzard", "ChangeHero", new { id = 12 })</p>
+        <img src="~/Pictures/Heroes/orc_wizzard.jpg" width="150" height="150" />
+        <p>@Html.ActionLink("Orc Archer", "ChangeHero", new { id = 13 })r</p>
+        <img src="~/Pictures/Heroes/orc_archer.jpg" width="150" height="150" />
+        <p>@Html.ActionLink("Orc Shaman", "ChangeHero", new { id = 3 })</p>
+        <img src="~/Pictures/Heroes/orc_shaman.jpg" width="150" height="150" />
     </div>
 </div>
