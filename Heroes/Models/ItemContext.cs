@@ -16,10 +16,6 @@ namespace Heroes.Models
         {
         }
 
-        public static ItemContext Create()
-        {
-            return new ItemContext();
-        }
 
     }
 }

@@ -13,7 +13,42 @@ namespace Heroes.Controllers
     public class HomeController : Controller
     {
         public ItemContext db = new ItemContext();
-        public ApplicationDbContext accdb = new ApplicationDbContext(); 
+        public ApplicationDbContext accdb = new ApplicationDbContext();
+        public Hero currentHero = null;
+        
+
+
+        public Hero CreateFromModel(int id)
+        {
+            Hero newhero, ret, model = null;
+            model = db.HeroesList.FirstOrDefault(x => x.HeroId == id);
+            newhero = new Hero
+            {
+                Name = "",
+                Race = model.Race,
+                Class = model.Class,
+                AvatarUri = model.AvatarUri,
+                Gold = model.Gold,
+                Description = model.Description,
+                Health = model.Health,
+                Mann = model.Mann,
+                Armor = model.Armor,
+                Power = model.Power,
+                Ability = model.Ability,
+                Intelligence = model.Intelligence,
+                UserName = HttpContext.User.Identity.Name
+        };
+
+            if (ModelState.IsValid)
+            {
+                accdb.Heroes.Add(newhero);
+                accdb.SaveChanges();
+                accdb.Dispose();
+                ret = newhero;
+                return ret;
+            }
+            return null;   
+        }
 
         public ActionResult IndexStart(ItemContext db)
         {
@@ -22,6 +57,7 @@ namespace Heroes.Controllers
             return View(H);
         }
 
+        [Authorize]
         [HttpGet]
         public ActionResult ChangeHero(int? id)
         {
@@ -30,355 +66,72 @@ namespace Heroes.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            Hero newhero, model, ret = null;
+            Hero ret = null;
 
             switch (id)
-            {
-                
+            {               
                 case 1:
-                    model = db.HeroesList.FirstOrDefault(x => x.HeroId == id);
-                    newhero = new Hero
-                    {   
-                        Name = "",
-                        Race = Races.Human,
-                        Class = Clases.Warior,
-                        AvatarUri = model.AvatarUri,
-                        Gold = model.Gold,
-                        Description = model.Description,
-                        Health = model.Health,
-                        Mann = model.Mann,
-                        Armor = model.Armor,
-                        Power = model.Power,
-                        Ability = model.Ability,
-                        Intelligence = model.Intelligence
-                    };
-                    accdb.Heroes.Add(newhero);
-                    accdb.SaveChanges();
-                    ret = newhero;
+                    ret = CreateFromModel(1);
                     break;
                 case 2:
-                    model = db.HeroesList.FirstOrDefault(x => x.HeroId == id);
-                    newhero = new Hero
-                    {
-                        Name = "",
-                        Race = Races.Elf,
-                        Class = Clases.Wizard,
-                        AvatarUri = model.AvatarUri,
-                        Gold = model.Gold,
-                        Description = model.Description,
-                        Health = model.Health,
-                        Mann = model.Mann,
-                        Armor = model.Armor,
-                        Power = model.Power,
-                        Ability = model.Ability,
-                        Intelligence = model.Intelligence
-                    };
-                    accdb.Heroes.Add(newhero);
-                    accdb.SaveChanges();
-                    ret = newhero;
+                    ret = CreateFromModel(2);
                     break;
                 case 3:
-                    model = db.HeroesList.FirstOrDefault(x => x.HeroId == id);
-                    newhero = new Hero
-                    {
-                        Name = "",
-                        Race = Races.Orc,
-                        Class = Clases.Healer,
-                        AvatarUri = model.AvatarUri,
-                        Gold = model.Gold,
-                        Description = model.Description,
-                        Health = model.Health,
-                        Mann = model.Mann,
-                        Armor = model.Armor,
-                        Power = model.Power,
-                        Ability = model.Ability,
-                        Intelligence = model.Intelligence
-                    };
-                    accdb.Heroes.Add(newhero);
-                    accdb.SaveChanges();
-                    ret = newhero;
+                    ret = CreateFromModel(3);
                     break;
-                case 6:
-                    model = db.HeroesList.FirstOrDefault(x => x.HeroId == id);
-                    newhero = new Hero
-                    {
-                        Name = "",
-                        Race = Races.Human,
-                        Class = Clases.Archer,
-                        AvatarUri = model.AvatarUri,
-                        Gold = model.Gold,
-                        Description = model.Description,
-                        Health = model.Health,
-                        Mann = model.Mann,
-                        Armor = model.Armor,
-                        Power = model.Power,
-                        Ability = model.Ability,
-                        Intelligence = model.Intelligence
-                    };
-                    accdb.Heroes.Add(newhero);
-                    accdb.SaveChanges();
-                    ret = newhero;
-                    break;
-                case 7:
-                    model = db.HeroesList.FirstOrDefault(x => x.HeroId == id);
-                    newhero = new Hero
-                    {
-                        Name = "",
-                        Race = Races.Human,
-                        Class = Clases.Healer,
-                        AvatarUri = model.AvatarUri,
-                        Gold = model.Gold,
-                        Description = model.Description,
-                        Health = model.Health,
-                        Mann = model.Mann,
-                        Armor = model.Armor,
-                        Power = model.Power,
-                        Ability = model.Ability,
-                        Intelligence = model.Intelligence
-                    };
-                    accdb.Heroes.Add(newhero);
-                    accdb.SaveChanges();
-                    ret = newhero;
+                case 4:
+                    ret = CreateFromModel(4);
                     break;
                 case 5:
-                    model = db.HeroesList.FirstOrDefault(x => x.HeroId == id);
-                    newhero = new Hero
-                    {
-                        Name = "",
-                        Race = Races.Human,
-                        Class = Clases.Wizard,
-                        AvatarUri = model.AvatarUri,
-                        Gold = model.Gold,
-                        Description = model.Description,
-                        Health = model.Health,
-                        Mann = model.Mann,
-                        Armor = model.Armor,
-                        Power = model.Power,
-                        Ability = model.Ability,
-                        Intelligence = model.Intelligence
-                    };
-                    accdb.Heroes.Add(newhero);
-                    accdb.SaveChanges();
-                    ret = newhero;
+                    ret = CreateFromModel(5);
+                    break;
+                case 6:
+                    ret = CreateFromModel(6);
+                    break;
+                case 7:
+                    ret = CreateFromModel(7);
                     break;
                 case 8:
-                    model = db.HeroesList.FirstOrDefault(x => x.HeroId == id);
-                    newhero = new Hero
-                    {
-                        Name = "",
-                        Race = Races.Elf,
-                        Class = Clases.Warior,
-                        AvatarUri = model.AvatarUri,
-                        Gold = model.Gold,
-                        Description = model.Description,
-                        Health = model.Health,
-                        Mann = model.Mann,
-                        Armor = model.Armor,
-                        Power = model.Power,
-                        Ability = model.Ability,
-                        Intelligence = model.Intelligence
-                    };
-                    accdb.Heroes.Add(newhero);
-                    accdb.SaveChanges();
-                    ret = newhero;
+                    ret = CreateFromModel(8);
                     break;
                 case 9:
-                    model = db.HeroesList.FirstOrDefault(x => x.HeroId == id);
-                    newhero = new Hero
-                    {
-                        Name = "",
-                        Race = Races.Elf,
-                        Class = Clases.Archer,
-                        AvatarUri = model.AvatarUri,
-                        Gold = model.Gold,
-                        Description = model.Description,
-                        Health = model.Health,
-                        Mann = model.Mann,
-                        Armor = model.Armor,
-                        Power = model.Power,
-                        Ability = model.Ability,
-                        Intelligence = model.Intelligence
-                    };
-                    accdb.Heroes.Add(newhero);
-                    accdb.SaveChanges();
-                    ret = newhero;
+                    ret = CreateFromModel(9);
                     break;
                 case 10:
-                    model = db.HeroesList.FirstOrDefault(x => x.HeroId == id);
-                    newhero = new Hero
-                    {
-                        Name = "",
-                        Race = Races.Elf,
-                        Class = Clases.Healer,
-                        AvatarUri = model.AvatarUri,
-                        Gold = model.Gold,
-                        Description = model.Description,
-                        Health = model.Health,
-                        Mann = model.Mann,
-                        Armor = model.Armor,
-                        Power = model.Power,
-                        Ability = model.Ability,
-                        Intelligence = model.Intelligence
-                    };
-                    accdb.Heroes.Add(newhero);
-                    accdb.SaveChanges();
-                    ret = newhero;
+                    ret = CreateFromModel(10);
                     break;
                 case 11:
-                    model = db.HeroesList.FirstOrDefault(x => x.HeroId == id);
-                    newhero = new Hero
-                    {
-                        Name = "",
-                        Race = Races.Orc,
-                        Class = Clases.Warior,
-                        AvatarUri = model.AvatarUri,
-                        Gold = model.Gold,
-                        Description = model.Description,
-                        Health = model.Health,
-                        Mann = model.Mann,
-                        Armor = model.Armor,
-                        Power = model.Power,
-                        Ability = model.Ability,
-                        Intelligence = model.Intelligence
-                    };
-                    accdb.Heroes.Add(newhero);
-                    accdb.SaveChanges();
-                    ret = newhero;
+                    ret = CreateFromModel(11);
                     break;
                 case 12:
-                    model = db.HeroesList.FirstOrDefault(x => x.HeroId == id);
-                    newhero = new Hero
-                    {
-                        Name = "",
-                        Race = Races.Orc,
-                        Class = Clases.Wizard,
-                        AvatarUri = model.AvatarUri,
-                        Gold = model.Gold,
-                        Description = model.Description,
-                        Health = model.Health,
-                        Mann = model.Mann,
-                        Armor = model.Armor,
-                        Power = model.Power,
-                        Ability = model.Ability,
-                        Intelligence = model.Intelligence
-                    };
-                    accdb.Heroes.Add(newhero);
-                    accdb.SaveChanges();
-                    ret = newhero;
+                    ret = CreateFromModel(12);
                     break;
                 case 13:
-                    model = db.HeroesList.FirstOrDefault(x => x.HeroId == id);
-                    newhero = new Hero
-                    {
-                        Name = "",
-                        Race = Races.Orc,
-                        Class = Clases.Archer,
-                        AvatarUri = model.AvatarUri,
-                        Gold = model.Gold,
-                        Description = model.Description,
-                        Health = model.Health,
-                        Mann = model.Mann,
-                        Armor = model.Armor,
-                        Power = model.Power,
-                        Ability = model.Ability,
-                        Intelligence = model.Intelligence
-                    };
-                    accdb.Heroes.Add(newhero);
-                    accdb.SaveChanges();
-                    ret = newhero;
+                    ret = CreateFromModel(13);
                     break;
                 case 14:
-                    model = db.HeroesList.FirstOrDefault(x => x.HeroId == id);
-                    newhero = new Hero
-                    {
-                        Name = "",
-                        Race = Races.Undead,
-                        Class = Clases.Warior,
-                        AvatarUri = model.AvatarUri,
-                        Gold = model.Gold,
-                        Description = model.Description,
-                        Health = model.Health,
-                        Mann = model.Mann,
-                        Armor = model.Armor,
-                        Power = model.Power,
-                        Ability = model.Ability,
-                        Intelligence = model.Intelligence
-                    };
-                    accdb.Heroes.Add(newhero);
-                    accdb.SaveChanges();
-                    ret = newhero;
+                    ret = CreateFromModel(14);
                     break;
                 case 15:
-                    model = db.HeroesList.FirstOrDefault(x => x.HeroId == id);
-                    newhero = new Hero
-                    {
-                        Name = "",
-                        Race = Races.Undead,
-                        Class = Clases.Wizard,
-                        AvatarUri = model.AvatarUri,
-                        Gold = model.Gold,
-                        Description = model.Description,
-                        Health = model.Health,
-                        Mann = model.Mann,
-                        Armor = model.Armor,
-                        Power = model.Power,
-                        Ability = model.Ability,
-                        Intelligence = model.Intelligence
-                    };
-                    accdb.Heroes.Add(newhero);
-                    accdb.SaveChanges();
-                    ret = newhero;
+                    ret = CreateFromModel(15);
                     break;
                 case 16:
-                    model = db.HeroesList.FirstOrDefault(x => x.HeroId == id);
-                    newhero = new Hero
-                    {
-                        Name = "",
-                        Race = Races.Undead,
-                        Class = Clases.Archer,
-                        AvatarUri = model.AvatarUri,
-                        Gold = model.Gold,
-                        Description = model.Description,
-                        Health = model.Health,
-                        Mann = model.Mann,
-                        Armor = model.Armor,
-                        Power = model.Power,
-                        Ability = model.Ability,
-                        Intelligence = model.Intelligence
-                    };
-                    accdb.Heroes.Add(newhero);
-                    accdb.SaveChanges();
-                    ret = newhero;
+                    ret = CreateFromModel(16);
                     break;
-                case 21:
-                    model = db.HeroesList.FirstOrDefault(x => x.HeroId == id);
-                    newhero = new Hero
-                    {
-                        Name = "",
-                        Race = Races.Undead,
-                        Class = Clases.Healer,
-                        AvatarUri = model.AvatarUri,
-                        Gold = model.Gold,
-                        Description = model.Description,
-                        Health = model.Health,
-                        Mann = model.Mann,
-                        Armor = model.Armor,
-                        Power = model.Power,
-                        Ability = model.Ability,
-                        Intelligence = model.Intelligence
-                    };
-                    accdb.Heroes.Add(newhero);
-                    accdb.SaveChanges();
-                    ret = newhero;
-                    break;
-
             }
             return View(ret);
         }
 
+        [Authorize]
         [HttpPost]
-        public ActionResult ChangeHero([Bind(Include = "HeroId, Name, Race, Class, Gold, AvatarUri, Description,Health,Mann,Armor,Power,Ability,Intelligence")]Hero h)
+        public ActionResult ChangeHero([Bind(Include = "HeroId, Name, Race, Class, Gold, AvatarUri, Description,Health,Mann,Armor,Power,Ability,Intelligence,UserName")]Hero h)
         {
+            Hero mod = null;
+            mod = accdb.Heroes.FirstOrDefault(x => x.Name == h.Name);
+            if (mod != null)
+            {
+                ModelState.AddModelError("Name", "Герой с таким именем уже есть");
+            }
             if (ModelState.IsValid)
             {
                 accdb.Entry(h).State = EntityState.Modified;
@@ -395,11 +148,11 @@ namespace Heroes.Controllers
             accdb.SaveChanges();
             return View("Index");
         }
+
         [HttpGet]
-        public ActionResult Details(int HeroId)
+        public ActionResult Details(int? HeroId)
         {
-            Hero hero = db.HeroesList.Single(x => x.HeroId == HeroId);
-            //ViewData["HeroData"] = hero;
+            Hero hero = accdb.Heroes.Single(x => x.HeroId == HeroId);
             return View(hero);
         }
 
@@ -412,7 +165,6 @@ namespace Heroes.Controllers
             return View();
         }
 
-
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
@@ -423,8 +175,14 @@ namespace Heroes.Controllers
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
-
             return View();
+        }
+
+        public ActionResult MyHeroes()
+        {
+        string user = HttpContext.User.Identity.Name;
+        var myHeroList = accdb.Heroes.Where<Hero>(x => x.UserName == user);
+            return View(myHeroList);
         }
     }
 }
