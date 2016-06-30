@@ -10,7 +10,6 @@ namespace Heroes.Models
 
     public class Item
     {
-        [HiddenInput(DisplayValue = false)]
         public int Id { get; set; }
 
         [Required]

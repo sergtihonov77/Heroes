@@ -198,6 +198,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Pictures\Heroes\elf_archer.jpg" />
     <Content Include="Pictures\Heroes\elf_warior.jpg" />
+    <Content Include="Pictures\Heroes\elf_warrior.jpg" />
     <Content Include="Pictures\Heroes\elf_wizard.jpeg" />
     <Content Include="Pictures\Heroes\elf_wizzard.jpg" />
     <Content Include="Pictures\Heroes\human_archer.jpg" />
@@ -211,6 +212,7 @@
     <Content Include="Pictures\Heroes\undead_archer.jpg" />
     <Content Include="Pictures\Heroes\undead_necr.jpg" />
     <Content Include="Pictures\Heroes\undead_warior %282%29.jpg" />
+    <Content Include="Pictures\Heroes\undead_warior.jpg" />
     <Content Include="Pictures\Heroes\undead_wizard.jpg" />
     <Content Include="Pictures\Items\arbalet_archer.jpg" />
     <Content Include="Pictures\Items\armor_archer.png" />
@@ -237,6 +239,7 @@
     <Content Include="Pictures\Items\staff_wizard.jpg" />
     <Content Include="Pictures\Items\sword_warior %282%29.jpg" />
     <Content Include="Pictures\Items\sword_warior.jpg" />
+    <Content Include="Pictures\wallpaper_index.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -297,6 +300,8 @@
     <Content Include="Views\Shop\PartrialDetails.cshtml" />
     <Content Include="Views\Home\ChangeHero.cshtml" />
     <Content Include="Views\Home\MyHeroes.cshtml" />
+    <Content Include="Views\Home\ChangeCurrentHero.cshtml" />
+    <Content Include="Views\Home\MyAccount.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

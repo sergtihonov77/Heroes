@@ -1,0 +1,130 @@
+﻿@model Heroes.Models.Hero
+
+@{
+    ViewBag.Title = "MyAccount";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>MyAccount</h2>
+
+<div>
+    <h4>Hero</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Race)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Race)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Class)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Class)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Gold)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gold)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AvatarUri)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AvatarUri)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Health)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Health)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mann)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mann)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Armor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Armor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Power)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Power)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ability)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ability)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Intelligence)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Intelligence)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Items)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Items)
+        </dd>
+
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

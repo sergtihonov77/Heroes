@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -12,12 +13,10 @@ namespace Heroes.Controllers
 {
     public class HomeController : Controller
     {
-        public ItemContext db = new ItemContext();
-        public ApplicationDbContext accdb = new ApplicationDbContext();
-        public Hero currentHero = null;
+        static public ItemContext db = new ItemContext();
+        static public ApplicationDbContext accdb = new ApplicationDbContext();
+        static public Hero currentHero = null;
         
-
-
         public Hero CreateFromModel(int id)
         {
             Hero newhero, ret, model = null;
@@ -49,6 +48,26 @@ namespace Heroes.Controllers
             }
             return null;   
         }
+
+        public async Task<ActionResult> MyAccount(int? id)
+        {
+            Hero h = null;
+            h = await accdb.Heroes.FindAsync(id);
+            if (h != null)
+            {
+                foreach (Item items in accdb.Items.Where<Item>(x => x.HeroId == h.HeroId))
+                {
+                    h.Health += items.Health;
+                    h.Mann += items.Mann;
+                    h.Armor += items.Armor;
+                    h.Ability += items.Ability;
+                    h.Power += items.Power;
+                    h.Intelligence += items.Intelligence;
+                }
+                return View(h);
+            }
+            return View();
+        } 
 
         public ActionResult IndexStart(ItemContext db)
         {
@@ -161,7 +180,9 @@ namespace Heroes.Controllers
             
             var H = db.HeroesList;
             ViewBag.H = H;
+            ViewBag.CurrHero = (currentHero != null) ? currentHero.Name : "Герой не выбран";
             ViewBag.Accid = HttpContext.User.Identity.Name;
+            
             return View();
         }
 
@@ -180,9 +201,28 @@ namespace Heroes.Controllers
 
         public ActionResult MyHeroes()
         {
-        string user = HttpContext.User.Identity.Name;
-        var myHeroList = accdb.Heroes.Where<Hero>(x => x.UserName == user);
+            if (currentHero != null)
+            {
+                ViewBag.CurrHero = currentHero.Name;
+            }
+            string user = HttpContext.User.Identity.Name;
+            var myHeroList = accdb.Heroes.Where<Hero>(x => x.UserName == user);
             return View(myHeroList);
+        }
+
+        public ActionResult ChangeCurrentHero(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            else
+            {
+                currentHero = accdb.Heroes.Single(x => x.HeroId == id);
+                ViewBag.CurrName = currentHero.Name;
+                return View(currentHero);
+            }
+            
         }
     }
 }

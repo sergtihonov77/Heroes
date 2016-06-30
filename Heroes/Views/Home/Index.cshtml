@@ -4,54 +4,88 @@
 }
 
 
-<div class="jumbotron">
+<div class="textm divind">
     <h1>HEROES</h1>
-    <p class="lead"> Welcome to heroes world. Please, change hero! + @ViewBag.Accid </p>
+    <p class="lead "> Welcome to heroes world. Please, change hero! @ViewBag.Accid </p>
+    <p> @ViewBag.CurrHero </p>
 </div>
 
-<div class="row">
-    <div class="col-md-3">
-        <h2>Humans</h2>
-        <p>@Html.ActionLink("Human Warrior", "ChangeHero", new { id = 1 })</p>
-        <img src="~/Pictures/Heroes/human_warior.jpg" width="150" height="150" />
-        <p>@Html.ActionLink("Human Wizard", "ChangeHero", new { id = 4 })</p>
-        <img src="~/Pictures/Heroes/human_wizard.jpg" width="150" height="150" />
-        <p>@Html.ActionLink("Human Archer", "ChangeHero", new { id = 5 })</p>
-        <img src="~/Pictures/Heroes/human_archer.jpg" width="150" height="150" />
-        <p>@Html.ActionLink("Human Healer", "ChangeHero", new { id = 6 })</p>
-        <img src="~/Pictures/Heroes/human_hiller.jpg" width="150" height="150"/>
+    <div class="row textm">
+        <div class="col-md-3">
+            <h2 class="divind">Humans</h2>
+
+            <div class="divind">
+                <p>@Html.ActionLink("Human Warrior", "ChangeHero", new { id = 1 })</p>
+                <img class="img-circle imgind img-thumbnail" src="~/Pictures/Heroes/human_warior.jpg" />
+            </div>
+            <div class="divind">
+                <p>@Html.ActionLink("Human Wizard", "ChangeHero", new { id = 4 })</p>
+                <img class="img-circle imgind img-thumbnail" src="~/Pictures/Heroes/human_wizard.jpg" />
+            </div>
+            <div class="divind">
+                <p>@Html.ActionLink("Human Archer", "ChangeHero", new { id = 5 })</p>
+                <img class="img-circle imgind img-thumbnail" src="~/Pictures/Heroes/human_archer.jpg" />
+            </div>
+            <div class="divind">
+                <p>@Html.ActionLink("Human Healer", "ChangeHero", new { id = 6 })</p>
+                <img  class="img-circle imgind img-thumbnail" src="~/Pictures/Heroes/human_hiller.jpg"/>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <h2 class="divind">Elfs</h2>
+            <div class="divind">
+                <p>@Html.ActionLink("Elf Paladin", "ChangeHero", new { id = 7 })</p>
+                <img class="img-circle imgind img-thumbnail" src="~/Pictures/Heroes/elf_warrior.jpg" />
+            </div>
+            <div class="divind">
+                <p>@Html.ActionLink("Elf Wizard", "ChangeHero", new { id = 2 })</p>
+                <img class="img-circle imgind img-thumbnail" src="~/Pictures/Heroes/elf_wizard.jpeg" />
+            </div>
+            <div class="divind">
+                <p>@Html.ActionLink("Elf Archer", "ChangeHero", new { id = 8 })</p>
+                <img class="img-circle imgind img-thumbnail" src="~/Pictures/Heroes/elf_archer.jpg" />
+            </div>
+            <div class="divind">
+                <p>@Html.ActionLink("Elf Healer", "ChangeHero", new { id = 9 })</p>
+                <img class="img-circle imgind img-thumbnail" src="~/Pictures/Heroes/elf_wizzard.jpg" />
+            </div>
+        </div>
+        <div class="col-md-3">
+            <h2 class="divind">Undead</h2>
+            <div class="divind">
+                <p>@Html.ActionLink("Undead Warrior", "ChangeHero", new { id = 13 })</p>
+                <img class="img-circle imgind img-thumbnail" src="~/Pictures/Heroes/undead_warior.jpg" />
+            </div>
+            <div class="divind">
+                <p>@Html.ActionLink("Undead Wizard", "ChangeHero", new { id = 14 })</p>
+                <img class="img-circle imgind img-thumbnail" src="~/Pictures/Heroes/undead_wizard.jpg" />
+            </div>
+            <div class="divind">
+                <p>@Html.ActionLink("Undead Archer", "ChangeHero", new { id = 15 })</p>
+                <img class="img-circle imgind img-thumbnail" src="~/Pictures/Heroes/undead_archer.jpg" />
+            </div>
+            <div class="divind">
+                <p>@Html.ActionLink("Undead Necromant", "ChangeHero", new { id = 16 })</p>
+                <img class="img-circle imgind img-thumbnail" src="~/Pictures/Heroes/undead_necr.jpg" />
+            </div>
+        </div>
+        <div class="col-md-3">
+            <h2 class="divind">Orcs</h2>
+            <div class="divind">
+                <p>@Html.ActionLink("Orc Warrior", "ChangeHero", new { id = 10 })</p>
+                <img class="img-circle imgind img-thumbnail" src="~/Pictures/Heroes/Orc_warior.jpg" />
+            </div>
+            <div class="divind">
+                <p>@Html.ActionLink("Orc Wizzard", "ChangeHero", new { id = 11 })</p>
+                <img class="img-circle imgind img-thumbnail" src="~/Pictures/Heroes/orc_wizzard.jpg" />
+            </div>
+            <div class="divind">
+                <p>@Html.ActionLink("Orc Archer", "ChangeHero", new { id = 12 })r</p>
+                <img class="img-circle imgind img-thumbnail" src="~/Pictures/Heroes/orc_archer.jpg" />
+            </div>
+            <div class="divind">
+                <p>@Html.ActionLink("Orc Shaman", "ChangeHero", new { id = 3 })</p>
+                <img class="img-circle imgind img-thumbnail" src="~/Pictures/Heroes/orc_shaman.jpg" />
+            </div>
+        </div>
     </div>
-    <div class="col-md-3">
-        <h2>Elfs</h2>
-        <p>@Html.ActionLink("Elf Paladin", "ChangeHero", new { id = 7 })</p>
-        <img src="~/Pictures/Heroes/elf_warior.jpg" width="150"  height="150" />
-        <p>@Html.ActionLink("Elf Wizard", "ChangeHero", new { id = 2 })</p>
-        <img src="~/Pictures/Heroes/elf_wizard.jpeg" width="150" height="150" />
-        <p>@Html.ActionLink("Elf Archer", "ChangeHero", new { id = 8})</p>
-        <img src="~/Pictures/Heroes/elf_archer.jpg" width="150" height="150" />
-        <p>@Html.ActionLink("Elf Healer", "ChangeHero", new { id = 9 })</p>
-        <img src="~/Pictures/Heroes/elf_wizzard.jpg" width="150" height="150" />
-    </div>
-    <div class="col-md-3">
-        <h2>Undead</h2>
-        <p>@Html.ActionLink("Undead Warrior", "ChangeHero", new { id = 13 })</p>
-        <img src="~/Pictures/Heroes/undead_warior (2).jpg" width="150"  height="150" />
-        <p>@Html.ActionLink("Undead Wizard", "ChangeHero", new { id = 14 })</p>
-        <img src="~/Pictures/Heroes/undead_wizard.jpg" width="150" height="150" />
-        <p>@Html.ActionLink("Undead Archer", "ChangeHero", new { id = 15 })</p>
-        <img src="~/Pictures/Heroes/undead_archer.jpg" width="150" height="150" />
-        <p>@Html.ActionLink("Undead Necromant", "ChangeHero", new { id = 16 })</p>
-        <img src="~/Pictures/Heroes/undead_necr.jpg" width="150" height="150" />
-    </div>
-    <div class="col-md-3">
-        <h2>Orcs</h2>
-        <p>@Html.ActionLink("Orc Warrior", "ChangeHero", new { id = 10 })</p>
-        <img src="~/Pictures/Heroes/Orc_warior.jpg" width="150" height="150" />
-        <p>@Html.ActionLink("Orc Wizzard", "ChangeHero", new { id = 11 })</p>
-        <img src="~/Pictures/Heroes/orc_wizzard.jpg" width="150" height="150" />
-        <p>@Html.ActionLink("Orc Archer", "ChangeHero", new { id = 12 })r</p>
-        <img src="~/Pictures/Heroes/orc_archer.jpg" width="150" height="150" />
-        <p>@Html.ActionLink("Orc Shaman", "ChangeHero", new { id = 3 })</p>
-        <img src="~/Pictures/Heroes/orc_shaman.jpg" width="150" height="150" />
-    </div>
-</div>

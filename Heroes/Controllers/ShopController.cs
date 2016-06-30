@@ -8,12 +8,14 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Heroes.Models;
+using Heroes.Controllers;
 
 namespace Heroes.Controllers
 {
     public class ShopController : Controller
     {
         private ItemContext db = new ItemContext();
+        private ApplicationDbContext accdb = new ApplicationDbContext();
 
         // GET: Shop
         public async Task<ActionResult> Index()
@@ -137,6 +139,45 @@ namespace Heroes.Controllers
                 return HttpNotFound();
             }
             return View(item);
+
+        }
+
+
+        public async Task<ActionResult> BuyItem(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Item item = await db.ItemsList.FindAsync(id);
+            if (item == null)
+            {
+                return HttpNotFound();
+            }
+            Hero h = null;
+            if (HomeController.currentHero != null)
+            {
+
+                if (HomeController.currentHero.Gold >= item.PurchacePrace)
+                {
+                    h = await accdb.Heroes.FindAsync(HomeController.currentHero.HeroId);
+                    item.HeroId = h.HeroId;
+                    h.Items.Add(item);
+                    h.Gold = h.Gold - item.PurchacePrace;
+                    accdb.Entry(h).State = EntityState.Modified;
+                    accdb.Items.Add(item);
+                    await accdb.SaveChangesAsync();
+                }
+                else
+                {
+                    ViewBag.ManyError = "Не хватает денег";
+                }
+            } 
+            else
+            {
+                ViewBag.NullHeroErr = "Герой невыбран";            
+            }
+            return View("Index");
 
         }
     }

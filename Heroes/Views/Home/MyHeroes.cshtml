@@ -7,36 +7,25 @@
 
 <h2>Мои герои</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+
+<h3>
+ Текущий герой @ViewBag.CurrHero    
+</h3>
 
 @foreach (var item in Model)
 {
-    <div class="panel panel-default">
-        <div class="panel-body">
-            <ul class="media-list">
-                <li class="media">
-                    <div class="media-left media-middle">
-                        <h3>@Html.DisplayFor(modelItem => item.Name)</h3>
-                        <a href="#">
-                            <img src="@Url.Content(item.AvatarUri)" height="200" width="220" />
-                        </a>
-                    </div>
-                    <div class="media-body">
-                        <h4 class="media-heading">Описание:</h4>
-                        <p>@Html.DisplayFor(modelItem => item.Description)</p>
-                        <p><a href="@Html.ActionLink("Details", "Details","Home", new { id=item.HeroId })" class="btn btn-primary" role="button">Подробнее &rarr;</a></p>
-                    </div>
-                </li>
-            </ul>
+
+        <div class="col-sm-6 col-md-3 divind">
+            <h3>@Html.DisplayFor(modelItem => item.Name)</h3>
+            <div class="media">
+                <img class="img-circle imgind img-thumbnail" src="@Url.Content(item.AvatarUri)" />
+                <div class="caption">                 
+                    @Html.ActionLink("Выбрать", "ChangeCurrentHero", new { id = item.HeroId }, new { @class = "btn btn-primary" })
+                    @Html.ActionLink("Обзор героя", "MyAccount", new { id = item.HeroId }, new { @class = "btn btn-primary" })
+                </div>
+            </div>
         </div>
-    </div>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.HeroId }) |
-            @Html.ActionLink("Details", "Details","Home", new { id=item.HeroId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.HeroId })
-        </td>
+
 }
 
 
