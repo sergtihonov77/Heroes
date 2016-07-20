@@ -69,13 +69,6 @@ namespace Heroes.Controllers
             return View();
         } 
 
-        public ActionResult IndexStart(ItemContext db)
-        {
-            IEnumerable<Hero> heroes = db.HeroesList;
-            var H = db.HeroesList;
-            return View(H);
-        }
-
         [Authorize]
         [HttpGet]
         public ActionResult ChangeHero(int? id)
@@ -143,7 +136,7 @@ namespace Heroes.Controllers
 
         [Authorize]
         [HttpPost]
-        public ActionResult ChangeHero([Bind(Include = "HeroId, Name, Race, Class, Gold, AvatarUri, Description,Health,Mann,Armor,Power,Ability,Intelligence,UserName")]Hero h)
+        public ActionResult CreateHero([Bind(Include = "HeroId, Name, Race, Class, Gold, AvatarUri, Description,Health,Mann,Armor,Power,Ability,Intelligence,UserName")]Hero h)
         {
             Hero mod = null;
             mod = accdb.Heroes.FirstOrDefault(x => x.Name == h.Name);
@@ -224,5 +217,34 @@ namespace Heroes.Controllers
             }
             
         }
+
+        public async Task<ActionResult> Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Hero h = await accdb.Heroes.FindAsync(id);
+            if (h == null)
+            {
+                return HttpNotFound();
+            }
+            return View(h);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> DeleteConfirmed(int id)
+        {
+            Hero h = await accdb.Heroes.FindAsync(id);
+            accdb.Heroes.Remove(h);
+            foreach (Item item in accdb.Items.Where<Item>(x => x.HeroId == h.HeroId))
+            {
+                accdb.Items.Remove(item);
+            }
+            await accdb.SaveChangesAsync();
+            return RedirectToAction("MyHeroes");
+        }
+
     }
 }

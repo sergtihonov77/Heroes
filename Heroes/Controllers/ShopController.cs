@@ -17,6 +17,20 @@ namespace Heroes.Controllers
         private ItemContext db = new ItemContext();
         private ApplicationDbContext accdb = new ApplicationDbContext();
 
+        public async Task<ActionResult> Sale()
+        {
+
+            if (HomeController.currentHero != null)
+            {
+                var h = HomeController.currentHero;
+                return View(await accdb.Items.Where(x => x.HeroId == h.HeroId).ToListAsync());
+            }
+            else
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+        }
+
         // GET: Shop
         public async Task<ActionResult> Index()
         {
@@ -149,11 +163,13 @@ namespace Heroes.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Item item = await db.ItemsList.FindAsync(id);
             if (item == null)
             {
                 return HttpNotFound();
             }
+
             Hero h = null;
             if (HomeController.currentHero != null)
             {
@@ -177,7 +193,7 @@ namespace Heroes.Controllers
             {
                 ViewBag.NullHeroErr = "Герой невыбран";            
             }
-            return View("Index");
+            return View("Details",item);
 
         }
     }

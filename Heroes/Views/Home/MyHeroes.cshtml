@@ -22,6 +22,7 @@
                 <div class="caption">                 
                     @Html.ActionLink("Выбрать", "ChangeCurrentHero", new { id = item.HeroId }, new { @class = "btn btn-primary" })
                     @Html.ActionLink("Обзор героя", "MyAccount", new { id = item.HeroId }, new { @class = "btn btn-primary" })
+                    @Html.ActionLink("Удалить", "Delete", new { id = item.HeroId }, new { @class = "btn btn-primary" })
                 </div>
             </div>
         </div>

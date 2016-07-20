@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Heroes.Models.Item>
+
+@{
+    ViewBag.Title = "Sale";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<ul class="nav nav-tabs navi">
+    <li role="presentation">@Html.ActionLink("Покупка", "Index")</li>
+    <li role="presentation"  class="active">@Html.ActionLink("Продажа", "Sale")</li>
+</ul>
+
+@foreach (var item in Model)
+{
+    <section class="section">
+        <div class="panel panel-default panelshop">
+            <div class="panel-body">
+                <ul class="media-list">
+                    <li class="media">
+                        <div class="media-left media-middle">
+                            <h3>@Html.DisplayFor(modelItem => item.Mark)</h3>
+                            <img class="imgshop img-rounded" src="@Url.Content(item.IconUri)" height="200" width="270" />
+                        </div>
+                        <div class="media-body">
+                            <h4 class="media-heading">Описание:</h4>
+                            <p>@Html.DisplayFor(modelItem => item.Description)</p>
+                            <p>@Html.DisplayFor(modelItem => item.Id)</p>
+                            @Html.ActionLink("Купить", "BuyItem", new { id = item.Id }, new { @class = "btn btn-primary" })
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+}
