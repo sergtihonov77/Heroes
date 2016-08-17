@@ -37,18 +37,11 @@ namespace Heroes.Controllers
                 Intelligence = model.Intelligence,
                 UserName = HttpContext.User.Identity.Name
         };
-
-            if (ModelState.IsValid)
-            {
-                accdb.Heroes.Add(newhero);
-                accdb.SaveChanges();
-                accdb.Dispose();
-                ret = newhero;
-                return ret;
-            }
-            return null;   
+            ret = newhero;
+            return ret;   
         }
 
+        [Authorize]
         public async Task<ActionResult> MyAccount(int? id)
         {
             Hero h = null;
@@ -71,7 +64,7 @@ namespace Heroes.Controllers
 
         [Authorize]
         [HttpGet]
-        public ActionResult ChangeHero(int? id)
+        public ActionResult CreateHero(int? id)
         {
             if (id == null)
             {
@@ -131,12 +124,12 @@ namespace Heroes.Controllers
                     ret = CreateFromModel(16);
                     break;
             }
-            return View(ret);
+            return View("CreateHero", ret);
         }
 
         [Authorize]
-        [HttpPost]
-        public ActionResult CreateHero([Bind(Include = "HeroId, Name, Race, Class, Gold, AvatarUri, Description,Health,Mann,Armor,Power,Ability,Intelligence,UserName")]Hero h)
+        [HttpPost, ActionName("CreateHero")]
+        public ActionResult CreateHeroConf([Bind(Include = "HeroId, Name, Race, Class, Gold, AvatarUri, Description,Health,Mann,Armor,Power,Ability,Intelligence,UserName")]Hero h)
         {
             Hero mod = null;
             mod = accdb.Heroes.FirstOrDefault(x => x.Name == h.Name);
@@ -146,6 +139,8 @@ namespace Heroes.Controllers
             }
             if (ModelState.IsValid)
             {
+                accdb.Heroes.Add(h);
+                accdb.SaveChanges();
                 accdb.Entry(h).State = EntityState.Modified;
                 accdb.SaveChanges();
                 return RedirectToAction("Index");
@@ -153,11 +148,9 @@ namespace Heroes.Controllers
             return View(h);
         }
 
-        public ActionResult BackToListChange(int? id)
+
+        public ActionResult BackToListChange()
         {
-            Hero dlt = accdb.Heroes.Find(id);
-            accdb.Heroes.Remove(dlt);
-            accdb.SaveChanges();
             return View("Index");
         }
 
@@ -192,6 +185,7 @@ namespace Heroes.Controllers
             return View();
         }
 
+        [Authorize]
         public ActionResult MyHeroes()
         {
             if (currentHero != null)
@@ -203,6 +197,7 @@ namespace Heroes.Controllers
             return View(myHeroList);
         }
 
+        [Authorize]
         public ActionResult ChangeCurrentHero(int? id)
         {
             if (id == null)
@@ -218,6 +213,7 @@ namespace Heroes.Controllers
             
         }
 
+        [Authorize]
         public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
@@ -232,6 +228,7 @@ namespace Heroes.Controllers
             return View(h);
         }
 
+        [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)

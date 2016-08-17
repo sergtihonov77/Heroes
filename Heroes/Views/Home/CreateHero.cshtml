@@ -16,12 +16,13 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal aside">
-        <hr />
+
         <div class="alert alert-warning" role="alert">
             <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
             <span class="sr-only">Error:</span>
             Введите имя нового персонажа!
         </div>
+
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.HeroId)
         @Html.HiddenFor(model => model.AvatarUri)

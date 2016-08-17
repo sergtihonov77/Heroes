@@ -156,7 +156,6 @@ namespace Heroes.Controllers
 
         }
 
-
         public async Task<ActionResult> BuyItem(int? id)
         {
             if (id == null)
