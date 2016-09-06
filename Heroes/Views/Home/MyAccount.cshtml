@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "MyAccount";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    int j = 0;
 }
 
 <h2>MyAccount</h2>
@@ -121,9 +122,48 @@
         <dd>
             @Html.DisplayFor(model => model.Items)
         </dd>
-
-
     </dl>
+
+    <div id="carousl" class="carousel slide">
+
+        <!--Индикаторы сладов-->        
+        <ol class="carousel-indicators">
+            <li class="active" data-target="#carousl" data-slide-to ="0"></li>
+            @for (int i = 0; i <= Model.Items.ToArray().Length; i++)
+            {   
+                <li data-target="#carousl" data-slide-to="@i+1"></li>
+
+            }
+        </ol> 
+
+        <!--Слайды, контент-->
+        <div class="carousel-inner">
+            <div class="item active">
+                <img class=" img-rounded" src="~/Pictures/start.jpg" height="200" width="270"/>
+                <div class="carousel-caption">
+                    <h3>111</h3>
+                </div>
+            </div>
+
+                @foreach (Heroes.Models.Item it in ViewBag.HeroItems)
+            {
+                    <div class="item">
+                        <img class="img-circle imgind img-thumbnail"src="@Url.Content(it.IconUri)" />
+                        <div class="carousel-caption">
+                            <h2>@it.Mark</h2> 
+                        </div>
+                     </div>
+             }
+            </div>
+
+        <!--Стрелки переключатели слайдов-->
+        <a href="#carousl" class="right carousel-control" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+        </a>
+        <a href="#carousl" class="left carousel-control" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+    </div>
 </div>
 <p>
     @Html.ActionLink("Back to List", "Index")

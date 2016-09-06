@@ -5,19 +5,18 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Создание нового героя</h2>
+<h2 class="divind">Создание нового героя</h2>
 
 <div class="section" >
-    <img class="thumbnail" src="@Url.Content(Model.AvatarUri)" width="300" height="300" />
+    <img class="img-rounded createimg" src="@Url.Content(Model.AvatarUri)" width="380" height="500" />
 </div>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm( new {@class="form-horizontal"}))
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal aside">
-
-        <div class="alert alert-warning" role="alert">
+        <div class="alert alert-warning divind" role="alert">
             <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
             <span class="sr-only">Error:</span>
             Введите имя нового персонажа!
@@ -37,7 +36,7 @@
         @Html.HiddenFor(model => model.Intelligence)
         @Html.HiddenFor(model => model.UserName)
 
-        <div class="form-group">
+        <div class="form-group ">
            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
@@ -45,13 +44,13 @@
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group ">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </div>
 
-        <dl class="dl-horizontal">
+        <dl class="dl-horizontal divind">
             <dt>
                 @Html.DisplayNameFor(model => model.Description)
             </dt>
@@ -121,7 +120,7 @@
         </dl>
 
         <div>
-            <p>@Html.ActionLink("Back", "BackToListChange", new { id = Model.HeroId })</p>
+            @Html.ActionLink("Назад", "BackToListChange","", new { @class = "btn btn-primary" })
         </div>
 
     </div>

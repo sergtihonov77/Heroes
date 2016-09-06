@@ -68,4 +68,3 @@ C:\Users\MyX\documents\visual studio 2015\Projects\Heroes\Heroes\obj\Debug\Heroe
 C:\Users\MyX\documents\visual studio 2015\Projects\Heroes\Heroes\obj\Debug\Heroes.csproj.GenerateResource.Cache
 C:\Users\MyX\documents\visual studio 2015\Projects\Heroes\Heroes\obj\Debug\Heroes.dll
 C:\Users\MyX\documents\visual studio 2015\Projects\Heroes\Heroes\obj\Debug\Heroes.pdb
-C:\Users\MyX\documents\visual studio 2015\Projects\Heroes\Heroes\obj\Debug\Heroes.csprojResolveAssemblyReference.cache

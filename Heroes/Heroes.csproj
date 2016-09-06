@@ -239,6 +239,7 @@
     <Content Include="Pictures\Items\staff_wizard.jpg" />
     <Content Include="Pictures\Items\sword_warior %282%29.jpg" />
     <Content Include="Pictures\Items\sword_warior.jpg" />
+    <Content Include="Pictures\start.jpg" />
     <Content Include="Pictures\wallpaper_index.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />

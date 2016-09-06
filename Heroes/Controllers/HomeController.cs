@@ -48,15 +48,17 @@ namespace Heroes.Controllers
             h = await accdb.Heroes.FindAsync(id);
             if (h != null)
             {
-                foreach (Item items in accdb.Items.Where<Item>(x => x.HeroId == h.HeroId))
+                foreach (Item item in accdb.Items.Where<Item>(x => x.HeroId == h.HeroId))
                 {
-                    h.Health += items.Health;
-                    h.Mann += items.Mann;
-                    h.Armor += items.Armor;
-                    h.Ability += items.Ability;
-                    h.Power += items.Power;
-                    h.Intelligence += items.Intelligence;
+                    h.Health += item.Health;
+                    h.Mann += item.Mann;
+                    h.Armor += item.Armor;
+                    h.Ability += item.Ability;
+                    h.Power += item.Power;
+                    h.Intelligence += item.Intelligence;
+                    h.Items.Add(item);
                 }
+                ViewBag.Heroitems = h.Items;
                 return View(h);
             }
             return View();
