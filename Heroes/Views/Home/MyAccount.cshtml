@@ -3,168 +3,150 @@
 @{
     ViewBag.Title = "MyAccount";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    int j = 0;
 }
 
-<h2>MyAccount</h2>
+
 
 <div>
-    <h4>Hero</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+    <h2 class="divind">@Model.Name</h2>
+    <div class="row">
+        <div class=" col-md-offset-1 col-md-6">
+            
+            <dl class="dl-horizontal">
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Race)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Race)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Race)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Race)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Class)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Class)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Class)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Class)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Gold)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Gold)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Gold)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Gold)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Health)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.AvatarUri)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Health)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.AvatarUri)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Mann)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Health)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Mann)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Health)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Armor)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Mann)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Armor)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Mann)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Power)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Armor)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Power)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Armor)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Ability)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Power)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Ability)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Power)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Intelligence)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Ability)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Intelligence)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Ability)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Description)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Intelligence)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Description)
+                </dd>
+     
+                <dt>
+                    @Html.DisplayNameFor(model => model.Items)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Intelligence)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Items)
+                </dd>
+            </dl>
+            <a href="~/Home/MyHeroes" class="btn btn-primary">Назад <i class="fa fa-level-down"></i></a>
+        </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
+        <div class="col-md-4 ">
+            <div id="carousl" class="carousel slide">
 
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.UserName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.UserName)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Items)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Items)
-        </dd>
-    </dl>
-
-    <div id="carousl" class="carousel slide">
-
-        <!--Индикаторы сладов-->        
-        <ol class="carousel-indicators">
-            <li class="active" data-target="#carousl" data-slide-to ="0"></li>
-            @for (int i = 0; i <= Model.Items.ToArray().Length; i++)
-            {   
-                <li data-target="#carousl" data-slide-to="@i+1"></li>
-
-            }
-        </ol> 
-
-        <!--Слайды, контент-->
-        <div class="carousel-inner">
-            <div class="item active">
-                <img class=" img-rounded" src="~/Pictures/start.jpg" height="200" width="270"/>
-                <div class="carousel-caption">
-                    <h3>111</h3>
-                </div>
-            </div>
-
-                @foreach (Heroes.Models.Item it in ViewBag.HeroItems)
+                <!--Индикаторы сладов-->
+                <ol class="carousel-indicators">
+                    <li class="active" data-target="#carousl" data-slide-to="0"></li>
+                    @for (int i = 0; i <= Model.Items.ToArray().Length; i++)
             {
-                    <div class="item">
-                        <img class="img-circle imgind img-thumbnail"src="@Url.Content(it.IconUri)" />
-                        <div class="carousel-caption">
-                            <h2>@it.Mark</h2> 
-                        </div>
-                     </div>
-             }
-            </div>
+                        <li data-target="#carousl" data-slide-to="@i+1"></li>
 
-        <!--Стрелки переключатели слайдов-->
-        <a href="#carousl" class="right carousel-control" data-slide="prev">
-            <span class="glyphicon glyphicon-chevron-right"></span>
-        </a>
-        <a href="#carousl" class="left carousel-control" data-slide="next">
-            <span class="glyphicon glyphicon-chevron-left"></span>
-        </a>
-    </div>
+                    }
+                </ol>
+
+                <!--Слайды, контент-->
+                <div class="carousel-inner divind">
+                    <div class="item active">
+                        <img class=" img-rounded" src="~/Pictures/start.jpg" height="200" width="270" />
+                        <div class="carousel-caption">
+                            <h3>111</h3>
+                        </div>
+                    </div>
+
+                    @foreach (Heroes.Models.Item it in Model.Items)
+            {
+                        <div class="item">
+                            <img class="img-circle imgind img-thumbnail" src="@Url.Content(it.IconUri)" />
+                            <div class="carousel-caption">
+                                <h2>@it.Mark</h2>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+                <!--Стрелки переключатели слайдов-->
+                <a href="#carousl" class="right carousel-control" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                </a>
+                <a href="#carousl" class="left carousel-control" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+            </div>
+        </div>
+    </div>   
+    
 </div>
-<p>
-    @Html.ActionLink("Back to List", "Index")
-</p>

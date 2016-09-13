@@ -39,6 +39,25 @@ textarea {
   width: 48%;
 }
 
+ .sectioncr {
+  float: left;
+  width: 44%;
+  margin: 0 0 0 10%;
+ }
+.asidecr {
+  float: right;
+  width: 46%;
+}
+
+ .sectionacc {
+  float: left;
+  width: 54%;
+ }
+.asideacc {
+  float: right;
+  width: 46%;
+}
+
 footer {
   clear: both;
 }
@@ -58,16 +77,33 @@ footer {
     height: 200px;
     width: 200px;
     margin: 5px;
-    background-color:aqua;
+    background-color:#428bca;
+    border:inset;
+    border-color:#428bca;
+}
+
+.backind {
+    background-color:#428bca;
+}
+
+.texth {
+    text-align:start;
 }
 
 .divind {
     text-align:center;
+    margin-bottom:10px;
+    margin-top:10px;
+}
+
+.margind {
+    margin-bottom:1px;
+    margin-top:1px;
 }
 
 .textm
 {
-    color:aqua;
+    color: #999999;
     font-stretch:expanded;
     font-weight:700;
 }

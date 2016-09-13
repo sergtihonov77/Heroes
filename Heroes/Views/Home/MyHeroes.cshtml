@@ -9,7 +9,7 @@
 
 
 <h3>
- Текущий герой @ViewBag.CurrHero    
+ Текущий герой : @((ViewBag.CurrHero == null) ? "не выбран" : ViewBag.CurrHero)  
 </h3>
 
 @foreach (var item in Model)
@@ -18,11 +18,17 @@
         <div class="col-sm-6 col-md-3 divind">
             <h3>@Html.DisplayFor(modelItem => item.Name)</h3>
             <div class="media">
-                <img class="img-circle imgind img-thumbnail" src="@Url.Content(item.AvatarUri)" />
-                <div class="caption">                 
-                    @Html.ActionLink("Выбрать", "ChangeCurrentHero", new { id = item.HeroId }, new { @class = "btn btn-primary" })
-                    @Html.ActionLink("Обзор героя", "MyAccount", new { id = item.HeroId }, new { @class = "btn btn-primary" })
-                    @Html.ActionLink("Удалить", "Delete", new { id = item.HeroId }, new { @class = "btn btn-primary" })
+                <img class="img-circle imgind " src="@Url.Content(item.AvatarUri)" />
+                <div class="caption"> 
+                    <div class="container">
+                        <div class="row">
+                            <div class="btn-group">
+                                @Html.ActionLink(" Выбрать", "MyAccount", new { id = item.HeroId }, new { @class = "btn btn-primary fa fa-plus" })
+                                @Html.ActionLink(" Удалить", "Delete", new { id = item.HeroId }, new { @class = "btn btn-danger fa fa-remove" })
+                            </div>
+                        </div>                    
+                    </div>                
+                
                 </div>
             </div>
         </div>

@@ -44,24 +44,29 @@ namespace Heroes.Controllers
         [Authorize]
         public async Task<ActionResult> MyAccount(int? id)
         {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
             Hero h = null;
             h = await accdb.Heroes.FindAsync(id);
-            if (h != null)
+            if (h != null && currentHero != h)
             {
-                foreach (Item item in accdb.Items.Where<Item>(x => x.HeroId == h.HeroId))
-                {
-                    h.Health += item.Health;
-                    h.Mann += item.Mann;
-                    h.Armor += item.Armor;
-                    h.Ability += item.Ability;
-                    h.Power += item.Power;
-                    h.Intelligence += item.Intelligence;
-                    h.Items.Add(item);
-                }
-                ViewBag.Heroitems = h.Items;
-                return View(h);
+                    foreach (Item item in accdb.Items.Where<Item>(x => x.HeroId == h.HeroId))
+                    {
+                        h.Health += item.Health;
+                        h.Mann += item.Mann;
+                        h.Armor += item.Armor;
+                        h.Ability += item.Ability;
+                        h.Power += item.Power;
+                        h.Intelligence += item.Intelligence;
+                        h.Items.Add(item);
+                    }
+                    currentHero = h;
+                    return View(h);
             }
-            return View();
+            return View(currentHero);
         } 
 
         [Authorize]
@@ -153,7 +158,7 @@ namespace Heroes.Controllers
 
         public ActionResult BackToListChange()
         {
-            return View("Index");
+            return View("MyHeroes");
         }
 
         [HttpGet]
@@ -197,22 +202,6 @@ namespace Heroes.Controllers
             string user = HttpContext.User.Identity.Name;
             var myHeroList = accdb.Heroes.Where<Hero>(x => x.UserName == user);
             return View(myHeroList);
-        }
-
-        [Authorize]
-        public ActionResult ChangeCurrentHero(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            else
-            {
-                currentHero = accdb.Heroes.Single(x => x.HeroId == id);
-                ViewBag.CurrName = currentHero.Name;
-                return View(currentHero);
-            }
-            
         }
 
         [Authorize]
