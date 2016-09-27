@@ -5,10 +5,16 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<ul class="nav nav-tabs navi">
-    <li role="presentation">@Html.ActionLink("Покупка", "Index")</li>
-    <li role="presentation"  class="active">@Html.ActionLink("Продажа", "Sale")</li>
-</ul>
+<div class="container">
+    <div class="row">
+        <div class=" col-md-offset-5 col-md-3">
+            <ul class="nav nav-tabs navi">
+                <li role="presentation">@Html.ActionLink("Покупка", "Index")</li>
+                <li role="presentation" class="active"> @Html.ActionLink("Продажа", "Sale")</li>
+            </ul>
+        </div>
+    </div>
+</div>
 
 @foreach (var item in Model)
 {
@@ -25,7 +31,7 @@
                             <h4 class="media-heading">Описание:</h4>
                             <p>@Html.DisplayFor(modelItem => item.Description)</p>
                             <p>@Html.DisplayFor(modelItem => item.Id)</p>
-                            @Html.ActionLink("Купить", "BuyItem", new { id = item.Id }, new { @class = "btn btn-primary" })
+                            @Html.ActionLink("Продать", "SaleItem", new { id = item.Id }, new { @class = "btn btn-primary" })
                         </div>
                     </li>
                 </ul>

@@ -177,11 +177,10 @@ namespace Heroes.Controllers
                 {
                     h = await accdb.Heroes.FindAsync(HomeController.currentHero.HeroId);
                     item.HeroId = h.HeroId;
-                    h.Items.Add(item);
                     h.Gold = h.Gold - item.PurchacePrace;
                     accdb.Entry(h).State = EntityState.Modified;
                     accdb.Items.Add(item);
-                    await accdb.SaveChangesAsync();
+                    accdb.SaveChanges();
                 }
                 else
                 {
@@ -195,5 +194,37 @@ namespace Heroes.Controllers
             return View("Details",item);
 
         }
+
+        public async Task<ActionResult> SaleItem(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            Item item = await accdb.Items.FindAsync(id);
+
+            if (item == null)
+            {
+                return HttpNotFound();
+            }
+
+            Hero h = null;
+            if (HomeController.currentHero != null)
+            {
+                h = await accdb.Heroes.FindAsync(HomeController.currentHero.HeroId);
+                h.Gold = h.Gold + (item.PurchacePrace / 2);
+                accdb.Entry(h).State = EntityState.Modified;
+                accdb.Items.Remove(item);
+                accdb.SaveChanges();      
+            }
+            else
+            {
+                ViewBag.NullHeroErr = "Герой невыбран";
+            }
+            return View("Details", item);
+
+        }
+
     }
 }

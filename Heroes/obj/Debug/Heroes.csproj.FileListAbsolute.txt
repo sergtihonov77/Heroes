@@ -83,8 +83,8 @@ C:\Users\MyX\documents\visual studio 2015\Projects\Heroes\Heroes\bin\ru\Microsof
 C:\Users\MyX\documents\visual studio 2015\Projects\Heroes\Heroes\bin\ru\Microsoft.Owin.Security.Google.resources.dll
 C:\Users\MyX\documents\visual studio 2015\Projects\Heroes\Heroes\bin\ru\Microsoft.Owin.Security.Twitter.resources.dll
 C:\Users\MyX\documents\visual studio 2015\Projects\Heroes\Heroes\bin\ru\Microsoft.Owin.Security.MicrosoftAccount.resources.dll
-C:\Users\MyX\documents\visual studio 2015\Projects\Heroes\Heroes\obj\Debug\Heroes.csprojResolveAssemblyReference.cache
 C:\Users\MyX\documents\visual studio 2015\Projects\Heroes\Heroes\obj\Debug\Heroes.Migrations.New.resources
 C:\Users\MyX\documents\visual studio 2015\Projects\Heroes\Heroes\obj\Debug\Heroes.csproj.GenerateResource.Cache
 C:\Users\MyX\documents\visual studio 2015\Projects\Heroes\Heroes\obj\Debug\Heroes.dll
 C:\Users\MyX\documents\visual studio 2015\Projects\Heroes\Heroes\obj\Debug\Heroes.pdb
+C:\Users\MyX\documents\visual studio 2015\Projects\Heroes\Heroes\obj\Debug\Heroes.csprojResolveAssemblyReference.cache

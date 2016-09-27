@@ -110,10 +110,10 @@
 
                 <!--Индикаторы сладов-->
                 <ol class="carousel-indicators">
-                    <li class="active" data-target="#carousl" data-slide-to="0"></li>
-                    @for (int i = 0; i <= Model.Items.ToArray().Length; i++)
-            {
-                        <li data-target="#carousl" data-slide-to="@i+1"></li>
+                   <!-- <li class="active" data-target="#carousl" data-slide-to="0"></li> -->
+                    @for (int i = 0; i <= (Model.Items == null ? 1 : Model.Items.ToArray().Length); i++)
+                    {
+                        <li data-target="#carousl" data-slide-to="@i"></li>
 
                     }
                 </ol>
@@ -127,15 +127,21 @@
                         </div>
                     </div>
 
-                    @foreach (Heroes.Models.Item it in Model.Items)
-            {
-                        <div class="item">
-                            <img class="img-circle imgind img-thumbnail" src="@Url.Content(it.IconUri)" />
-                            <div class="carousel-caption">
-                                <h2>@it.Mark</h2>
+                    @{
+                        if (Model.Items != null)
+                        {
+
+                            foreach (Heroes.Models.Item it in Model.Items)
+                            {
+                            <div class="item">
+                                <img class="img-circle imgind img-thumbnail" src="@Url.Content(it.IconUri)" />
+                                <div class="carousel-caption">
+                                    <h2>@it.Mark</h2>
+                                </div>
                             </div>
-                        </div>
-                    }
+                              }
+                            }
+                        }
                 </div>
 
                 <!--Стрелки переключатели слайдов-->

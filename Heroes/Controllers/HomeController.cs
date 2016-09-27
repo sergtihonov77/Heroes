@@ -49,24 +49,32 @@ namespace Heroes.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            Hero h = null;
+            Hero h, model = null;
+
             h = await accdb.Heroes.FindAsync(id);
-            if (h != null && currentHero != h)
+            model = db.HeroesList.FirstOrDefault(x => x.Description == h.Description);
+
+            var itms = accdb.Items.Where(x => x.HeroId == h.HeroId).ToList();
+            h.Items = null;
+            h.Items = itms;
+
+            if (h != null && h.Health == model.Health && h.Mann == model.Mann && h.Armor == model.Armor && h.Ability == model.Ability
+                && h.Power == model.Power && h.Intelligence == model.Intelligence)
             {
-                    foreach (Item item in accdb.Items.Where<Item>(x => x.HeroId == h.HeroId))
-                    {
-                        h.Health += item.Health;
-                        h.Mann += item.Mann;
-                        h.Armor += item.Armor;
-                        h.Ability += item.Ability;
-                        h.Power += item.Power;
-                        h.Intelligence += item.Intelligence;
-                        h.Items.Add(item);
-                    }
-                    currentHero = h;
-                    return View(h);
+                foreach (Item item in h.Items)
+                {
+                    h.Health += item.Health;
+                    h.Mann += item.Mann;
+                    h.Armor += item.Armor;
+                    h.Ability += item.Ability;
+                    h.Power += item.Power;
+                    h.Intelligence += item.Intelligence;
+                }
+                currentHero = h;
+                return View(h);
             }
-            return View(currentHero);
+            currentHero = h;
+            return View(h);
         } 
 
         [Authorize]
