@@ -8,104 +8,58 @@
 
 
 <div>
-    <h2 class="divind">@Model.Name</h2>
+    
     <div class="row">
-        <div class=" col-md-offset-1 col-md-6">
-            
-            <dl class="dl-horizontal">
+        <div class=" divind col-md-offset-1 col-md-5 itemsl">
+            <div>
+                <img class="img-circle imgind" id="fll" src="@Url.Content(Model.AvatarUri)" alt="Alternate Text" />
+                <h2>@Model.Name</h2>
+                <h3>@Html.DisplayNameFor(model => model.Class) @Model.Class</h3>
+                <h3>@Html.DisplayNameFor(model => model.Race) @Model.Race</h3>
+                <h4>@Html.DisplayFor(model => model.Description)</h4>
+            </div>
+           
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.Race)
-                </dt>
+            <h4>@Html.DisplayNameFor(model => model.Health) @Html.DisplayFor(model => model.Health)</h4>
+            <div class="progress">
+                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="@(Model.Health)" aria-valuemin="0" aria-valuemax="1000" style="width:@(Model.Health/10)%;">
+                </div>
+            </div>
 
-                <dd>
-                    @Html.DisplayFor(model => model.Race)
-                </dd>
+            <h4>@Html.DisplayNameFor(model => model.Mann) @Html.DisplayFor(model => model.Mann)</h4>
+            <div class="progress">
+                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="@(Model.Mann)" aria-valuemin="0" aria-valuemax="1000" style="width:@(Model.Mann/10)%;">
+                </div>
+            </div>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.Class)
-                </dt>
+            <h4>@Html.DisplayNameFor(model => model.Armor) @Html.DisplayFor(model => model.Armor)</h4>
+            <div class="progress">
+                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="@(Model.Armor)" aria-valuemin="0" aria-valuemax="100" style="width:@(Model.Armor)%;">
+                </div>
+            </div>
+            <h4>@Html.DisplayNameFor(model => model.Power) @Html.DisplayFor(model => model.Power)</h4>
+            <div class="progress">
+                <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="@(Model.Power)" aria-valuemin="0" aria-valuemax="100" style="width:@(Model.Power)%;">
+                </div>
+            </div>
 
-                <dd>
-                    @Html.DisplayFor(model => model.Class)
-                </dd>
+            <h4>@Html.DisplayNameFor(model => model.Ability) @Html.DisplayFor(model => model.Ability)</h4>
+            <div class="progress">
+                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="@(Model.Ability)" aria-valuemin="0" aria-valuemax="100" style="width:@(Model.Ability)%;">
+                </div>
+            </div>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.Gold)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Gold)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.Health)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Health)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.Mann)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Mann)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.Armor)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Armor)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.Power)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Power)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.Ability)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Ability)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.Intelligence)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Intelligence)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.Description)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Description)
-                </dd>
-     
-                <dt>
-                    @Html.DisplayNameFor(model => model.Items)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Items)
-                </dd>
-            </dl>
-            <a href="~/Home/MyHeroes" class="btn btn-primary">Назад <i class="fa fa-level-down"></i></a>
+            <h4>@Html.DisplayNameFor(model => model.Intelligence) @Html.DisplayFor(model => model.Intelligence)</h4>
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" aria-valuenow="@(Model.Intelligence)" aria-valuemin="0" aria-valuemax="100" style="width:@(Model.Intelligence)%;">
+                </div>
+            </div>
+    
+            <a href="~/Home/MyHeroes" class="btn btn-primary" data-toggle="tooltip" data-placement="left" title="Вернуться к списку героев"> <i class="fa fa-reply"></i> Назад</a>
         </div>
 
-        <div class="col-md-4 ">
+        <div class="col-md-offset-1 col-md-4 itemsl">
+            <h1>@Html.DisplayNameFor(model => model.Items) @Html.DisplayFor(model => model.Items)</h1>
             <div id="carousl" class="carousel slide">
 
                 <!--Индикаторы сладов-->
@@ -134,7 +88,7 @@
                             foreach (Heroes.Models.Item it in Model.Items)
                             {
                             <div class="item">
-                                <img class="img-circle imgind img-thumbnail" src="@Url.Content(it.IconUri)" />
+                                <img class="img-circle imgaccit " src="@Url.Content(it.IconUri)" width="300" height="300" />
                                 <div class="carousel-caption">
                                     <h2>@it.Mark</h2>
                                 </div>

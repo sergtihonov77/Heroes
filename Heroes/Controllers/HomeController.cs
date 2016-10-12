@@ -55,7 +55,7 @@ namespace Heroes.Controllers
             model = db.HeroesList.FirstOrDefault(x => x.Description == h.Description);
 
             var itms = accdb.Items.Where(x => x.HeroId == h.HeroId).ToList();
-            h.Items = null;
+            h.Items.Clear();
             h.Items = itms;
 
             if (h != null && h.Health == model.Health && h.Mann == model.Mann && h.Armor == model.Armor && h.Ability == model.Ability
@@ -179,7 +179,7 @@ namespace Heroes.Controllers
         public ActionResult Index( ItemContext db)
         {
             
-            var H = db.HeroesList;
+            var H = db.HeroesList.AsNoTracking();
             ViewBag.H = H;
             ViewBag.CurrHero = (currentHero != null) ? currentHero.Name : "Герой не выбран";
             ViewBag.Accid = HttpContext.User.Identity.Name;

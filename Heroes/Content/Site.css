@@ -94,6 +94,7 @@ footer {
     text-align:center;
     margin-bottom:10px;
     margin-top:10px;
+    align-content:center;
 }
 
 .margind {
@@ -128,3 +129,21 @@ footer {
     background-color:transparent;
     text-align:center;
 }
+
+.itemsl {
+    margin-top:15px;
+}
+
+.imgaccit{
+    height: 300px;
+    width: 300px;
+    margin: 5px;
+    background-color:#428bca;
+    border:inset;
+    border-color:#428bca;
+}
+
+#fll {
+    float:left;
+}
+

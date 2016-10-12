@@ -41,5 +41,10 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
-</body>
+    <script>
+        $(function () {
+            $('[Data-toggle="tooltip"]').tooltip();
+        })
+    </script>
+</bodyclass="textm">
 </html>
